@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Profile Page</title>
+    <link rel="stylesheet" href="../css/prof.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="icon-background" id="icon-background"></div>
+    <div class="dummy-content"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-content">
+          <div class="nav-logo">
+              <img src="../img/cardiologist.gif" alt="DocPoint Logo">
+              <div class="logo-text">Doc<span>Piont</span></div>
+          </div>
+          
+          <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+          </button>
+          
+          <div class="nav-links">
+              <a href="index.html" class="nav-link active">Home</a>
+              
+              <a href="learn more.html" class="nav-link">Learn More</a>
+              <a href="login2.html" class="nav-link" id="logout">Log Out</a>
+          </div>
+          
+          <div class="nav-right">
+              <div class="search-box1">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" placeholder="Search DocPoint">
+              </div>
+              
+              <button class="profile-btn" onclick="location.href='patientprof.html'">
+                  <img src="../img/Untitled design (1).png" alt="Profile">
+              </button>
+          </div>
+      </div>
+  </nav>
+    
+    <div class="container">
+      <!-- Header Section -->
+      <section class="header-section animate-section">
+        <img
+          src="../img/Untitled design (1).png"
+          alt="Doctor Banner"
+          class="banner-image"
+        />
+        <div class="banner-overlay">
+          <h1>Dr. Ahmed Mohammed</h1>
+          <p>dintal Specialist</p>
+          <div class="button-group">
+            <button class="btn btn-primary" onclick="location.href='online consultation.html'">Book Appointment</button>
+            <button class="btn btn-secondary" onclick="location.href='#article'">More Details</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Doctor's Details Section -->
+      <section class="details-section animate-section">
+        <div class="details-grid">
+          <div class="details-column">
+            <h2>Professional Information</h2>
+            <div class="info-group">
+              <div class="info-item">
+                <i class="icon">📍</i>
+                <div>
+                  <h3>Clinic Address</h3>
+                  <p>123 Medical Center Drive<br>Salah Salim<br>Bani Suef</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="icon">⏰</i>
+                <div>
+                  <h3>Working Hours</h3>
+                  <p>Mon-Fri: 9:00 AM - 5:00 PM<br>Sat: 10:00 AM - 2:00 PM</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="icon">📞</i>
+                <div>
+                  <h3>Contact</h3>
+                  <p>+201245678900</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="icon">✉️</i>
+                <div>
+                  <h3>Email</h3>
+                  <p>ahmedmohammed@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="details-column">
+            <h2>Education & Expertise</h2>
+            <div class="info-group">
+              <div class="info-item">
+                <h3>Education</h3>
+                <p>
+                <ul>
+                  <li>Doctor of Dental Surgery (DDS) – Cairo University</li>
+                  <li>Advanced Training in Cosmetic Dentistry – Harvard University</li>
+                  <li>Bachelor’s Degree in Dental Surgery – Cairo University</li>
+                  <li>Master’s in Cosmetic Dentistry – Ain Shams University</li>
+                  <li>Fellow of the International Congress of Oral Implantologists (FICOI)</li>
+                  <li>Experience 8+ years</li>
+                </ul>
+              </p>
+              </div>
+              <div class="info-item">
+                <h3>Languages</h3>
+                <p>English, Spanish, French</p>
+              </div>
+              <div class="info-item">
+                <h3>Consultation Fees</h3>
+                <p>Initial Consultation: 250L.E<br>Follow-up Visit: 150L.E <br>online Consultation: 199L.E</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews Section -->
+      <section class="reviews-section animate-section">
+        
+        <h2>Patient Reviews</h2>
+        <div class="reviews-grid">
+          <div class="reviews-list">
+            <div class="review-card animate-section">
+              <div class="stars">
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star">★</span>
+              </div>
+              <p>"Dr. Johnson is incredibly knowledgeable and caring. She took the time to explain everything thoroughly."</p>
+              <p class="reviewer">- Mary Smith</p>
+            </div>
+          </div>
+          <div class="review-form">
+            <div class="stars1">
+              <h3>Add Your Review</h3>
+
+              <div class="rating-stars">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+              </div>
+            </div>
+            <textarea placeholder="Share your experience..."></textarea>
+            <button class="btn btn-primary" id="submit-review">Submit Review</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Section -->
+      <section class="articles-section animate-section" id="article">
+        <div class="articles-header">
+          <h2>Latest Articles</h2>
+          <div class="article-nav">
+            <button class="nav-btn prev-btn">←</button>
+            <button class="nav-btn next-btn">→</button>
+          </div>
+        </div>
+        <div class="articles-container">
+          <div class="articles-wrapper">
+            <div class="article-card">
+              <img src="../img/close-up-portrait-cute-kid-gray-pajamas-brushing-her-teeth.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🦷The Importance of Regular Tooth Brushing</h3>
+                <p>Brushing your teeth twice a day using a soft-bristled brush and fluoride toothpaste helps remove plaque and prevent cavities.
+                  Don’t forget to brush your tongue as well, it can harbor bacteria that cause bad breath.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/cheerful-little-girl-holding-bell-pepper-background-various-vegetables-healthy-food-concept.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🥦 Healthy Nutrition for Strong Teeth</h3>
+                <p>Eating fiber-rich foods like vegetables and fruits helps naturally clean your teeth.
+                  Avoid sugary snacks and carbonated drinks, which contribute to tooth decay and enamel erosion.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/man-drinking-water.jpg" alt="Article">
+              <div class="article-content">
+                <h3>💧 Why Drinking Water Helps Your Teeth</h3>
+                <p>Drinking water after meals helps rinse away food particles and reduce mouth acidity, lowering the risk of cavities.
+                  It also keeps your mouth hydrated and stimulates saliva production, your mouth’s natural defense system.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/person-taking-care-teeth-hygiene.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🪥  Flossing Matters</h3>
+                <p>Using dental floss once a day removes food debris and plaque from between your teeth — areas your toothbrush can’t reach.
+                  This reduces the risk of gum disease and cavities between teeth.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/dentist-doing-check-up-patient.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🦷 Visit Your Dentist Regularly</h3>
+                <p>Seeing your dentist every 6 months helps detect dental problems early.
+                  Professional cleanings remove built-up plaque and tartar, keeping your teeth and gums Healthy</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/beauty-women-concept-young-smiling-woman-showing-her-cute-dimples-face-looking-happy.jpg" alt="Article">
+              <div class="article-content">
+                <h3>😁 Whitening Teeth Safely</h3>
+                <p>Everyone loves a bright smile, but overusing whitening products can damage your enamel.
+                  Always consult your dentist before starting any whitening treatment to ensure it’s safe for your teeth.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/happy-afro-kid-regular-check-up-teeth-dental-clinic.jpg" alt="Article">
+              <div class="article-content">
+                <h3>👶 Dental Care for Children</h3>
+                <p>Start brushing your child’s teeth as soon as they appear.
+                  Use a rice-sized amount of toothpaste and teach them to brush twice a day — good habits start early!</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/young-beautiful-woman-wearing-gray-t-shirt-showing-gesture-isolated-yellow-wall.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🛑 Stop Teeth Grinding</h3>
+                <p>Teeth grinding (bruxism) can cause tooth wear and jaw pain.
+                  If you grind your teeth at night, ask your dentist about a night guard to protect your smile while you sleep.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/cropped-shot-men-using-paste-tooth.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🧼 Replace Your Toothbrush Regularly</h3>
+                <p>Toothbrushes should be replaced every 3 to 4 months, or sooner if the bristles are worn.
+                  A worn toothbrush won't clean your teeth properly and can even damage your gums.</p>
+              </div>
+            </div>
+            <div class="article-card">
+              <img src="../img/m4co_tehl_220301.jpg" alt="Article">
+              <div class="article-content">
+                <h3>🧠 Oral Health Affects Overall Health</h3>
+                <p>Poor oral hygiene has been linked to heart disease, diabetes, and other systemic conditions.
+                  Taking care of your teeth isn't just about your smile — it's important for your whole body.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Before & After Gallery -->
+      <section class="gallery-section animate-section">
+        <h2>Before & After Gallery</h2>
+        <div class="gallery-grid">
+          <div class="case-item">
+            <div class="case-images">
+              <div class="image-container">
+                <img src="../img/Get your teeth done in Turkey! 🦷.jpeg" alt="Before">
+                <p>Before & After</p>
+              </div>
+              
+            </div>
+            <p class="case-description">Patient underwent successful cardiac rehabilitation program</p>
+          </div>
+          <div class="case-item">
+            <div class="case-images">
+              <div class="image-container">
+                <img src="../img/Before & After 🌎💜.jpeg" alt="Before">
+                <p>Before & After</p>
+              </div>
+              
+            </div>
+            <p class="case-description">Successful recovery after cardiac procedure</p>
+          </div>
+          <div class="case-item">
+            <div class="case-images">
+              <div class="image-container">
+                <img src="../img/Dental Implants - Before & After - Banjara Hill, Hyderabad.jpeg" alt="Before">
+                <p>Before & After</p>
+              </div>
+              
+            </div>
+            <p class="case-description">Remarkable improvement in heart function post-treatment</p>
+          </div>
+          <div class="case-item">
+            <div class="case-images">
+              <div class="image-container">
+                <img src="../img/Unpinning Pinterest for April 2013.jpeg" alt="Before">
+                <p>Before & After</p>
+              </div>
+              
+            </div>     <p class="case-description">Significant progress in cardiovascular health after therapy</p>
+          </div>
+          
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <h3>About the medical center</h3>
+                  <p>We are an integrated medical center offering comprehensive medical services of the highest quality and care. We aim to improve the health of the community through distinguished medical services.</p>
+                 <!-- داخل القسم social-links -->
+                  <div class="social-links">
+                  <a href="https://www.facebook.com" class="fb" title="فيسبوك" target="_blank" rel="noopener"></a>
+                  <a href="https://www.twitter.com" class="tw" title="تويتر" target="_blank" rel="noopener"></a>
+                  <a href="https://www.instagram.com" class="ig" title="انستغرام" target="_blank" rel="noopener"></a>
+                  <a href="https://www.linkedin.com" class="ln" title="لينكد إن" target="_blank" rel="noopener"></a>
+                  </div>
+    
+              </div>
+              
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                <li><a href="..//html/login2.html">Home</a></li>
+                <li><a href="..//html/learn more.html">learnMore</a></li>
+                <li><a href="..//html/book.html">online consulation</a></li>
+                <li><a href="..//html/patientprof.html">proifle</a></li>
+             
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h3>department</h3>
+                <ul>
+      
+                <li><a href="..//html/cardiologist.html">cardiologist</a></li>
+                <li><a href="..//html/surgeon.html">surgeon</a></li>
+                <li><a href="..//html/Urologist.html">Urologist</a></li>
+                <li><a href="..//html/ENT.html">Ent</a></li>
+                <li><a href="..//html/Pediatrician.html">Pediatrician</a></li>
+                <li><a href="..//html/Pulmonologist.html">Pulmonologist</a></li>
+                </ul>
+            
+              </div>
+              <div class="footer-section">
+                <h3>department</h3>
+                <ul>
+                <li><a href="..//html/Dermatologist.html">Dermatologist</a></li>
+                <li><a href="..//html/Dentist.html">dentist</a></li>
+                <li><a href="..//html/GYNAECOLOGIST.HTML">Obstetrics and Gynecology</a></li>
+                <li><a href="..//html/Oncologist.html">Oncologist</a></li>
+                <li><a href="..//html/orthopedic.html">orthopedic</a></li>
+              
+              
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h3>Contact us</h3>
+                  <p class="contact-info contact-address">
+                    Health Street, Medical City
+                                </p>
+                  <p class="contact-info contact-phone">
+                      +123 456 7890
+                  </p>
+                  <p class="contact-info contact-email">
+                      info@medicalcenter.com
+                  </p>
+              </div>
+          </div>
+          
+          <div class="footer-bottom">
+            <p>&copy; 2025 Medical Center | All rights reserved</p>
+          </div>
+      </div>
+  </footer>
+
+    <script>
+              // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+            } else {
+              entry.target.classList.remove('animate-in'); // Reset animation when out of view
+            }
+          });
+        }, { threshold: 0.1 });
+
+        // Observe all sections for animations
+        document.querySelectorAll('section').forEach(section => {
+          observer.observe(section);
+        });
+
+        // Star Rating System
+        const ratingStars = document.querySelectorAll('.rating-stars .star');
+        let currentRating = 0;
+
+        ratingStars.forEach(star => {
+          star.addEventListener('click', (e) => {
+            const rating = parseInt(e.target.dataset.rating);
+            currentRating = rating;
+            updateStars();
+          });
+        });
+
+        function updateStars() {
+          ratingStars.forEach((star, index) => {
+            star.classList.toggle('active', index < currentRating);
+          });
+        }
+
+        // Reviews System
+        const reviewsList = document.querySelector('.reviews-list');
+        const reviewForm = document.querySelector('.review-form');
+        const reviewTextarea = reviewForm.querySelector('textarea');
+
+        reviewForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (currentRating === 0 || !reviewTextarea.value.trim()) {
+            alert('Please provide both a rating and a review');
+            return;
+          }
+
+          const newReview = document.createElement('div');
+          newReview.className = 'review-card animate-section slide-right';
+          
+          const starsHtml = Array(5).fill('').map((_, i) => 
+            `<span class="star ${i < currentRating ? 'active' : ''}">★</span>`
+          ).join('');
+
+          newReview.innerHTML = `
+            <div class="stars">
+              ${starsHtml}
+            </div>
+            <p>"${reviewTextarea.value}"</p>
+            <p class="reviewer">- Anonymous</p>
+          `;
+
+          reviewsList.appendChild(newReview);
+          observer.observe(newReview);
+
+          // Reset form
+          currentRating = 0;
+          updateStars();
+          reviewTextarea.value = '';
+        });
+
+        // Articles Auto-scroll
+        const articlesWrapper = document.querySelector('.articles-wrapper');
+        const articles = document.querySelectorAll('.article-card');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentIndex = 0;
+        const articleWidth = 300;
+        const totalArticles = articles.length;
+
+        function scrollArticles(direction) {
+          if (direction === 'next') {
+            currentIndex = (currentIndex + 1) % totalArticles;
+          } else {
+            currentIndex = (currentIndex - 1 + totalArticles) % totalArticles;
+          }
+          updateArticlesPosition();
+        }
+
+        function updateArticlesPosition() {
+          const offset = -currentIndex * articleWidth;
+          articlesWrapper.style.transform = `translateX(${offset}px)`;
+          
+          // Clone and append first article to end if we're at the last one
+          if (currentIndex === totalArticles - 1) {
+            setTimeout(() => {
+              articlesWrapper.style.transition = 'none';
+              currentIndex = 0;
+              updateArticlesPosition();
+              setTimeout(() => {
+                articlesWrapper.style.transition = 'transform 0.5s ease';
+              }, 50);
+            }, 500);
+          }
+        }
+
+        // Auto-scroll every 2 seconds
+        let autoScrollInterval = setInterval(() => {
+          scrollArticles('next');
+        }, 2500);
+
+        // Manual navigation
+        prevBtn.addEventListener('click', () => {
+          clearInterval(autoScrollInterval);
+          scrollArticles('prev');
+          autoScrollInterval = setInterval(() => scrollArticles('next'), 2000);
+        });
+
+        nextBtn.addEventListener('click', () => {
+          clearInterval(autoScrollInterval);
+          scrollArticles('next');
+          autoScrollInterval = setInterval(() => scrollArticles('next'), 2000);
+        });
+
+        // Pause auto-scroll when hovering over articles
+        articlesWrapper.addEventListener('mouseenter', () => {
+          clearInterval(autoScrollInterval);
+        });
+
+        articlesWrapper.addEventListener('mouseleave', () => {
+          autoScrollInterval = setInterval(() => scrollArticles('next'), 2000);
+        });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const iconBackground = document.getElementById('icon-background');
+          const icons = [
+              '❤️', '🩺', '💊', '💉', '🧬', '🦠', '🧪', '🩸', '🫀', '🫁', '🧠', '👨‍⚕️', '👩‍⚕️', '🏥'
+          ];
+          
+          // Create more floating icons for a fuller effect
+          for (let i = 0; i < 50; i++) {
+              const icon = document.createElement('div');
+              icon.className = 'medical-icon';
+              icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+              icon.style.left = `${Math.random() * 100}%`;
+              icon.style.fontSize = `${Math.random() * 20 + 20}px`;
+              icon.style.animationDuration = `${Math.random() * 30 + 10}s`;
+              icon.style.animationDelay = `${Math.random() * 5}s`;
+              iconBackground.appendChild(icon);
+          }
+      });
+  </script>
+  </body>
+</html>

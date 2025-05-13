@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocPoint - قسم الاستشارة</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="../css/sle on.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  
+  <div class="icon-background" id="icon-background"></div>
+  <div class="dummy-content"></div>
+  <!-- شريط التنقل -->
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-content">
+        <div class="nav-logo">
+            <img src="../img/cardiologist.gif" alt="DocPoint Logo">
+            <div class="logo-text">Doc<span>Piont</span></div>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            ☰
+        </button>
+        
+        <div class="nav-links">
+            <a href="index.html" class="nav-link ">Home</a>
+            
+            
+            <div class="nav-dropdown">
+                <a class="nav-link active" >Departments</a>
+                <div class="dropdown-content">
+                    <a href="cardiologist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-cardiology-48.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Cardiology</a>
+                    <a href="surgeon.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-surgeon-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Surgeon</a>
+                    <a href="orthopedic.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-orthopedic-64.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Orthopedics</a>
+                    <a href="ENT.html" class="dropdown-item"style="display: flex;  "><img src="../img/icons8-head-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">ENT</a>
+                    <a href="Pediatrician.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-pediatrics-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pediatrician</a>
+                    <a href="Dermatologist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-dermatology-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Dermatology</a>
+                    <a href="Dentist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-dentistry-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Dentistry</a>
+                    <a href="GYNAECOLOGIST.HTML" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-periods-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Obstetrics & Gynecology</a>
+                    <a href="Oncologist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-oncologist-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Oncologist</a>
+                    <a href="Pediatrician.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-pediatrics-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pediatrics</a>
+                    <a href="Urologist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-urology-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Urology</a>
+                    <a href="Pulmonologist.html" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-anatomy-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pulmonology</a>
+                </div>
+            </div>
+            <a href="learn more.html" class="nav-link">Learn More</a>
+            <a href="login2.html" class="nav-link" id="logout">Log Out</a>
+            
+        </div>
+        
+        <div class="nav-right">
+            <div class="search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Search DocPoint">
+            </div>
+            
+            <button class="profile-btn" onclick="location.href='patientedit.html'">
+                <img src="../img/bohemian-man-with-his-arms-crossed.jpg" alt="Profile">
+            </button>
+        </div>
+    </div>
+  </nav>
+
+    
+  <!-- قسم كيفية العمل -->
+  <section class="how-it-works text-center">
+    <div class="container">
+      <h2 class="mb-5">?How does the service work</h2>
+
+      <div class="row">
+        <!-- الخطوة 1 -->
+        <div class="col-md-4 wow animate__animated animate__fadeInLeft" data-wow-delay="0.2s">
+          <div class="step-card p-4 shadow-lg rounded">
+            <div class="step-number bg-primary text-white mx-auto mb-3">1</div>
+            <div class="step-icon mb-3">📋</div>
+            <h3>Fill out the application</h3>
+            <p>Fill out the consultation form with the necessary information about your health condition.</p>
+          </div>
+        </div>
+
+        <!-- الخطوة 2 -->
+        <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+          <div class="step-card p-4 shadow-lg rounded">
+            <div class="step-number bg-primary text-white mx-auto mb-3">2</div>
+            <div class="step-icon mb-3">📞</div>
+            <h3>Contact the doctor</h3>
+            <p>An appointment will be scheduled for a consultation, and the doctor will contact you. Communication eases pain.</p>
+          </div>
+        </div>
+
+        <!-- الخطوة 3 -->
+        <div class="col-md-4 wow animate__animated animate__fadeInRight" data-wow-delay="0.6s">
+          <div class="step-card p-4 shadow-lg rounded">
+            <div class="step-number bg-primary text-white mx-auto mb-3">3</div>
+            <div class="step-icon mb-3">💊</div>
+            <h3>Get treated</h3>
+            <p>After the consultation, you can get recommendations and prescriptions. Make sure to take the dose prescribed for you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content section -->
+  <section class="content-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- معلومات الاستشارة (في اليمين) -->
+        <div class="col-lg-5 col-md-6 mb-4">
+          <div class="info-box p-4 h-100 animate__animated animate__fadeInLeft">
+            <h4 class="section-title text-primary">Consultation Information</h4>
+            <div class="info-item">
+              <span class="icon">⏳</span>
+              <strong>Duration of Consultation</strong>
+              <p>The consultation takes approximately 20-30 minutes depending on the case.</p>
+            </div>
+            <div class="info-item">
+              <span class="icon">🔒</span>
+              <strong>Privacy and Security</strong>
+              <p>All medical and personal data is fully encrypted and protected according to security standards.</p>
+            </div>
+            <div class="info-item">
+              <span class="icon">📄</span>
+              <strong>Medical Report</strong>
+              <p>You will receive a detailed medical report after the consultation.</p>
+            </div>
+            <div class="info-item">
+              <span class="icon">🔹</span>
+              <strong>Medical Services</strong>
+              <p>We offer a wide range of high-quality medical services to ensure your health and comfort.</p>
+            </div>
+            <div class="info-item">
+              <span class="icon">🏥</span>
+              <strong>Hospitals</strong>
+              <p>The best hospitals equipped with the latest medical technology.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- نموذج طلب الاستشارة (في الشمال) -->
+        <div class="col-lg-5 col-md-6 mb-4">
+          <div class="info-box p-4 h-100 animate__animated animate__fadeInRight">
+            <h2 class="interactive-title text-primary">Request a New Consultation</h2>
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" placeholder="Enter your full name" required="">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Enter your phone number" required="">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Enter your email" required="" >
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Required Specialization</label>
+                <select class="form-select">
+                  <option value="">Choose your specialty</option>
+                  <option value="cardiology">Cardiology</option>
+                  <option value="pediatrics">Pediatrics</option>
+                  <option value="orthopedics">Orthopedics</option>
+                  <option value="dermatology">Dermatology</option>
+                  <option value="neurology">Neurology</option>
+                  <option value="psychology">Psychology</option>
+                  <option value="gynecology">Gynecology</option>
+                  <option value="dentistry">Dentistry</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Consultation Type</label>
+                <select class="form-select">
+                  <option selected>Choose consultation type</option>
+                  <option>Online consultation</option>
+                  <option>Offline consultation</option>
+                </select>
+              </div>
+             
+              <div class="mb-3">
+                <label class="form-label">Preferred Date</label>
+                <input type="date" class="form-control" required="">
+              </div>
+              <button type="button" class="btn btn-primary w-100" onclick="window.location.href='pay.html'">Payment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الأسئلة الشائعة -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section">
+        <h2>Frequently asked questions</h2>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">?Is online consultation safe</div>
+          <div class="faq-answer">Yes, all conversations are 100% encrypted and secure according to the highest security standards.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">?How can I pay</div>
+          <div class="faq-answer">You can pay by credit cards or e-wallets.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">?Can I cancel the consultation</div>
+          <div class="faq-answer">Yes, you can cancel your consultation 24 hours before the appointment without any fees.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- محتوى الموقع يأتي هنا -->
+    
+ <footer class="footer">
+  <div class="footer-container">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>About the medical center</h3>
+              <p>We are an integrated medical center offering comprehensive medical services of the highest quality and care. We aim to improve the health of the community through distinguished medical services.</p>
+             <!-- داخل القسم social-links -->
+              <div class="social-links">
+              <a href="https://www.facebook.com" class="fb" title="فيسبوك" target="_blank" rel="noopener"></a>
+              <a href="https://www.twitter.com" class="tw" title="تويتر" target="_blank" rel="noopener"></a>
+              <a href="https://www.instagram.com" class="ig" title="انستغرام" target="_blank" rel="noopener"></a>
+              <a href="https://www.linkedin.com" class="ln" title="لينكد إن" target="_blank" rel="noopener"></a>
+              </div>
+
+          </div>
+          
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+            <li><a href="..//html/login2.html">Home</a></li>
+            <li><a href="..//html/learn more.html">learnMore</a></li>
+            <li><a href="..//html/book.html">online consulation</a></li>
+            <li><a href="..//html/patientprof.html">proifle</a></li>
+         
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>department</h3>
+            <ul>
+  
+            <li><a href="..//html/cardiologist.html">cardiologist</a></li>
+            <li><a href="..//html/surgeon.html">surgeon</a></li>
+            <li><a href="..//html/Urologist.html">Urologist</a></li>
+            <li><a href="..//html/ENT.html">Ent</a></li>
+            <li><a href="..//html/Pediatrician.html">Pediatrician</a></li>
+            <li><a href="..//html/Pulmonologist.html">Pulmonologist</a></li>
+            </ul>
+        
+          </div>
+          <div class="footer-section">
+            <h3>department</h3>
+            <ul>
+            <li><a href="..//html/Dermatologist.html">Dermatologist</a></li>
+            <li><a href="..//html/Dentist.html">dentist</a></li>
+            <li><a href="..//html/GYNAECOLOGIST.HTML">Obstetrics and Gynecology</a></li>
+            <li><a href="..//html/Oncologist.html">Oncologist</a></li>
+            <li><a href="..//html/orthopedic.html">orthopedic</a></li>
+          
+          
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact us</h3>
+              <p class="contact-info contact-address">
+                Health Street, Medical City
+                            </p>
+              <p class="contact-info contact-phone">
+                  +123 456 7890
+              </p>
+              <p class="contact-info contact-email">
+                  info@medicalcenter.com
+              </p>
+          </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Medical Center | All rights reserved</p>
+      </div>
+  </div>
+</footer>
+  <script src="..//js/mainb.js">
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const iconBackground = document.getElementById('icon-background');
+        const icons = [
+            '❤️', '🩺', '💊', '💉', '🧬', '🦠', '🧪', '🩸', '🫀', '🫁', '🧠', '👨‍⚕️', '👩‍⚕️', '🏥'
+        ];
+        
+        // Create more floating icons for a fuller effect
+        for (let i = 0; i < 50; i++) {
+            const icon = document.createElement('div');
+            icon.className = 'medical-icon';
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = `${Math.random() * 100}%`;
+            icon.style.fontSize = `${Math.random() * 20 + 20}px`;
+            icon.style.animationDuration = `${Math.random() * 30 + 10}s`;
+            icon.style.animationDelay = `${Math.random() * 5}s`;
+            iconBackground.appendChild(icon);
+        }
+    });
+</script>
+</body>
+</html>    
+

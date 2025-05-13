@@ -1,0 +1,906 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: "lato",sans-serif;
+    background-image: url("../img/photo_2025-04-21_20-30-21.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    color: #333;
+    direction: ltr;
+    margin: 0;
+}
+
+
+
+/* الهيدر */
+header {
+    background-color: #3c949e;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.lang-btn, .login-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.lang-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.login-btn {
+    background-color: white;
+    color: #3c949e;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+/* قسم الفيديو */
+.video-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* .video-placeholder { 
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #1e40af;
+    transition: transform 0.3s;
+}
+
+.video-placeholder:hover {
+    transform: scale(1.05);
+    background-color: rgba(30, 64, 175, 0.2);
+} 
+
+.video-icon {
+    margin-left: 10px;
+    font-size: 1.5rem;
+} */
+
+/* قسم المعلومات */
+/* .info-section {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.info-slider {
+    height: 160px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dbeafe;
+}
+
+.info-slide {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.5s ease;
+}
+
+.info-slide.active {
+    opacity: 1;
+}
+
+.info-slide h3 {
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.info-slide p {
+    color: #4b5563;
+    line-height: 1.6;
+} */
+.cards{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    gap: 20px;
+    direction: ltr;
+  }
+
+  .card {
+    flex: 0 0 300px;
+    transition: transform 0.5s;
+  }
+
+
+  
+.article {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
+  min-height: 100px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+}
+
+.article h2 {
+  padding: 15px 20px 10px;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.article p {
+  padding: 0 20px 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #3c949e;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+    color: #3c949e;
+}
+
+.nav-arrow.prev {
+    left: 10px;
+}
+
+.nav-arrow.next {
+    right: 10px;
+}
+
+.slide-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 8px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #3c949e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    width: 24px;
+    border-radius: 5px;
+    background-color: #3c949e;
+}
+
+/* قسم تسجيل الدخول */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* 
+body {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    background: #ffffff;
+} */
+
+input,
+button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.tip {
+    font-size: 20px;
+    margin: 40px auto 50px;
+    text-align: center;
+}
+
+.cont {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 900px;
+    height: 550px;
+    margin: 0 auto 100px;
+    background: #3c949e;
+    box-shadow:  0 5px 15px rgba(30, 86, 100, 0.5);
+
+}
+
+.form {
+    position: relative;
+    width: 640px;
+    height: 100%;
+    left:  -20%;
+    -webkit-transition: -webkit-transform 1.2s ease-in-out;
+    transition: -webkit-transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+    padding: 50px 30px 0;
+}
+
+.sub-cont {
+    overflow: hidden;
+    position: absolute;
+    left: 640px;
+    top: 0;
+    width: 900px;
+    height: 100%;
+    padding-left: 260px;
+    background: #3c949e;
+    -webkit-transition: -webkit-transform 1.2s ease-in-out;
+    transition: -webkit-transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.cont.s--signup .sub-cont {
+    -webkit-transform: translate3d(-640px, 0, 0);
+    transform: translate3d(-640px, 0, 0);
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.img {
+    overflow: hidden;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    padding-top: 360px;
+    background-image:url(6046113617239197242.jpg)
+}
+
+.img:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 900px;
+    height: 100%;
+    background-image: url("ext.jpg");
+    opacity: .8;
+    background-size: cover;
+    -webkit-transition: -webkit-transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.cont.s--signup .img:before {
+    -webkit-transform: translate3d(640px, 0, 0);
+    transform: translate3d(640px, 0, 0);
+}
+
+.img__text {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    color: #fff;
+    -webkit-transition: -webkit-transform 1.2s ease-in-out;
+    transition: -webkit-transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out;
+    transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img__text h2 {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.img__text p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.cont.s--signup .img__text.m--up {
+    -webkit-transform: translateX(520px);
+    transform: translateX(520px);
+}
+
+.img__text.m--in {
+    -webkit-transform: translateX(-520px);
+    transform: translateX(-520px);
+}
+
+.cont.s--signup .img__text.m--in {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.img__btn {
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    width: 100px;
+    height: 36px;
+    margin: 0 auto;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.img__btn:after {
+    content: '';
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+.img__btn span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-transform 1.2s;
+    transition: -webkit-transform 1.2s;
+    transition: transform 1.2s;
+    transition: transform 1.2s, -webkit-transform 1.2s;
+}
+
+.img__btn span.m--in {
+    -webkit-transform: translateY(-72px);
+    transform: translateY(-72px);
+}
+
+.cont.s--signup .img__btn span.m--in {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.cont.s--signup .img__btn span.m--up {
+    -webkit-transform: translateY(72px);
+    transform: translateY(72px);
+}
+
+h2 {
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+}
+
+label span {
+    font-size: 12px;
+    color: #cfcfcf;
+    text-transform: uppercase;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.forgot-pass {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: #cfcfcf;
+}
+
+.submit {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: #3c949e;
+    text-transform: uppercase;
+}
+
+
+.fb-btn {
+    border: 2px solid #d3dae9;
+    color: #3c949e;
+}
+
+.fb-btn span {
+    font-weight: bold;
+    color: #3c949e;
+}
+
+.sign-in {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.cont.s--signup .sign-in {
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 1.2s;
+    transition-duration: 1.2s;
+    -webkit-transform: translate3d(640px, 0, 0);
+    transform: translate3d(640px, 0, 0);
+}
+
+.sign-up {
+    -webkit-transform: translate3d(-900px, 0, 0);
+    transform: translate3d(-900px, 0, 0);
+}
+
+.cont.s--signup .sign-up {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* الفوتر */
+footer {
+    background-color: #3c949e;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* وضع LTR للغة الإنجليزية */
+body.ltr {
+    direction: ltr;
+}
+
+body.ltr .nav-arrow.prev {
+    right: 10px;
+    left: auto;
+}
+
+body.ltr .nav-arrow.next {
+    left: 10px;
+    right: auto;
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        height: 300px;
+    }
+    
+    .info-slider {
+        height: 180px;
+    }
+}
+        
+
+
+
+/* تنسيق الحقل والليبل */
+label select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+    appearance: none; /* لإخفاء سهم القائمة الافتراضي */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+}
+
+label select:focus {
+    border-color: #3c949e;
+    outline: none;
+    background-color: #fff;
+}
+
+/* اختيار اسم الحقل */
+label span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
+
+.cont .sign-up {
+    display: none;
+  }
+  
+  .cont.s--signup .sign-in {
+    display: none;
+  }
+  
+  .cont.s--signup .sign-up {
+    display: block;
+  }
+
+  
+
+  .form.sign-up {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.form.sign-up button.submit {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+.cont {
+    width: 80%;
+    max-width: 900px;
+    height: 500px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.form {
+    padding: 20px 30px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+label span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    border-color: #3c949e;
+    box-shadow: 0 0 8px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+    outline: none;
+}
+
+button.submit {
+    background: linear-gradient(to right, #3c949e, #3c949e);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button.submit:hover {
+    background: linear-gradient(to right, #3c949e, #3c949e);
+}
+
+label {
+    position: relative;
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  label input,
+  label select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  label input::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+  
+  label span {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: #3c949e;
+    padding: 0 5px;
+    font-size: 13px;
+    color: white;
+    border-radius: 5px;
+    pointer-events: none;
+  }
+  
+  input:focus, select:focus {
+    border-color: #3c949e;
+    box-shadow: 0 0 8px rgba(#3c949e,#3c949e,#3c949e,#3c949e);
+    outline: none;
+    background-color: #f0f8ff; /* تغيير الخلفية عند التفاعل */
+}
+button.submit {
+    background: linear-gradient(to right, #3c949e, #3c949e);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button.submit:hover {
+    background: linear-gradient(to right, #3c949e, #3c949e);
+    transform: scale(1.05); /* تأثير تكبير الزر عند التحويم */
+}
+
+button.submit:active {
+    transform: scale(1); /* إعادة الزر لحجمه الأصلي عند الضغط */
+}
+
+label select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    cursor: pointer; /* تغيير المؤشر ليظهر أنه يمكن التفاعل مع الـ select */
+}
+
+label select:focus {
+    border-color: #3c949e;
+    outline: none;
+    background-color: #fff;
+}
+
+label input:focus,
+label select:focus {
+    border-color: #3c949e;
+    box-shadow: 0 0 8px rgba(#3c949e,#3c949e,#3c949e,#3c949e);
+    outline: none;
+    background-color: #fff;
+}
+
+label input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+label span {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: #3c949e;
+    padding: 0 5px;
+    font-size: 13px;
+    color: white;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+.forgot-pass {
+    background-color: #fff;
+    color: #3c949e;
+    border: 2px solid #3c949e;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0 0 auto;
+    width: fit-content;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+}
+
+.forgot-pass:hover {
+    background-color: #3c949e;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+}
+
+/* تنسيق زرار Sign Up و Sign In */
+.submit, .auth-button {
+    background-color: #fff;
+    color: #3c949e;
+    border: 2px solid #3c949e;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+    width: fit-content;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+}
+
+.submit:hover, .auth-button:hover {
+    background-color: #3c949e;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(#3c949e, #3c949e, #3c949e, #3c949e);
+}
+
+body {
+    background: url("Toka/photo_2025-04-21_20-30-21.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh; /* تأكيد أن الصفحة تأخذ كامل الارتفاع */
+
+    
+}

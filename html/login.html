@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docpoint - الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <style>
+        body {
+            background-image: url('..//img//1679989721915.png') ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="header-buttons">
+            <button class="lang-btn" id="langToggle">
+                <span class="lang-icon">🌐</span>
+                <span class="lang-text">English</span>
+            </button>
+            <button class="login-btn" id="loginBtn">Login</button>
+        </div>
+        <div class="logo">Docpoint</div>
+    </header>
+<!-- قسم الفيديو -->
+    <div class="video-section">
+       
+        <video width="1400" autoplay muted loop playsinlinw>
+            <source src="..//img/فيديو واتساب بتاريخ 2025-04-15 في 18.38.11_a5b8aa0e.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- قسم المعلومات المتحركة -->
+   <div class="cards">
+    <div class="article">
+        <h2>Latest research on heart disease</h2>
+        <p>Heart disease is a broad term used to describe a group of diseases
+             that affect the heart. The different diseases that fall under the umbrella of heart disease include:
+            Cardiovascular disease.
+            Arrhythmia.
+            Congenital heart defects.
+            Cardiomyopathy.
+            Heart disease caused by inflammation of the pericardium.
+            Heart valve disease.</p>
+    </div>
+    <div class="article">
+       
+        <h2>Benefits of healthy nutrition</h2>
+        <p>Detoxifying the body and giving the skin freshness. Boosting energy levels, increasing the rate 
+            of blood cell and muscle production. Reducing the rate of dehydration in the human body. Regulating the human body
+             temperature; which helps to feel active and energetic all the time.</p>
+    </div>
+    <div class="article">
+   
+        <h2>The importance of exercise</h2>
+        <p>Regular physical activity helps strengthen your muscles and improve your endurance. 
+            Exercise helps deliver oxygen and nutrients to your body's tissues and helps your cardiovascular
+             system work more efficiently.
+             When your heart and lungs are healthy, you have more energy to do everyday tasks.</p>
+    </div>
+</div>
+    <!-- أزرار التنقل -->
+<!-- <button class="nav-arrow prev" id="prevBtn">&#10094;</button>
+<button class="nav-arrow next" id="nextBtn">&#10095;</button>
+<div class="slide-indicators" id="indicators"></div> -->
+
+<!-- قسم تسجيل الدخول -->
+<div class="login-section" id="loginSection">
+    <br><br>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome</h2>
+            <label>
+                <select id="loginUserType" name="userType" required>
+                    <option value="">Select User Type</option>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="hospital">Hospital</option>
+                </select>
+                <span>User Type</span>
+            </label>
+
+            <label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" />
+                <span>Email</span>
+            
+            <label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" />
+                <span>Password</span>
+            </label>
+            <p class="forgot-pass">?Forgot password</p>
+            <button type="button" class="submit" id="loginButton">Sign In</button>
+        </div>
+
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h3>Don't have an account? Please Sign up!</h3>
+                </div>
+                <div class="img__text m--in">
+                    <h3>If you already has an account, just sign in.</h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <select id="userType" name="userType" required>
+                        <option value="">Select User Type</option>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="hospital">Hospital</option>
+                    </select>
+                    <span>User Type</span>
+                </label>
+
+                <div id="patientFields">
+                    <label>
+                        <input type="text" name="patientId" id="patientId" placeholder="Enter Patient ID" />
+                        <span>Patient ID</span>
+                    </label>
+                </div>
+
+                <div id="doctorFields" style="display:none;">
+                    <label>
+                        <input type="text" name="doctorId" id="doctorId" placeholder="Enter Doctor ID" />
+                        <span>Doctor ID</span>
+                    </label>
+                    <label>
+                        <input type="text" name="specialization" id="specialization" placeholder="Specialization" />
+                        <span>Specialization</span>
+                    </label>
+                </div>
+
+                <div id="hospitalFields" style="display:none;">
+                    <label>
+                        <input type="text" name="hospitalId" id="hospitalId" placeholder="Hospital ID" />
+                        <span>Hospital ID</span>
+                    </label>
+                    <label>
+                        <input type="text" name="hospitalName" id="hospitalName" placeholder="Hospital Name" />
+                        <span>Hospital Name</span>
+                    </label>
+                </div>
+
+                <label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" required />
+                    <span>Name</span>
+                </label>
+                <label>
+                    <input type="date" name="birthDate" id="birthDate" placeholder="dd/mm/yyyy" />
+                    <span>Birth Date</span>
+                </label>
+                <label>
+                    <input type="email" name="email" id="email" placeholder="Your Email" required />
+                    <span>Email</span>
+                </label>
+                <label>
+                    <input type="password" name="password" id="password" placeholder="Password" required />
+                    <span>Password</span>
+                </label>
+                <button type="button" class="submit auth-button" id="signupButton">Sign Up</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- الفوتر -->
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
+    <script>
+          document.querySelector('.img__btn').addEventListener('click', function() {
+                document.querySelector('.cont').classList.toggle('s--signup');
+            });
+
+    </script>
+
+<script>
+    const container = document.querySelector('.cards');
+  
+    setInterval(() => {
+      const firstCard = container.children[0];
+      container.appendChild(firstCard); // ينقل أول كارت لآخر واحد
+    }, 3000); // كل 3 ثواني
+  </script>
+</body>
+</html>

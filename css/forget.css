@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    /* Allow scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4eff9 100%);
+}
+
+.icon-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.medical-icon {
+    position: absolute;
+    opacity: 0.15;
+    animation: float 20s linear infinite;
+}
+
+/* Add dummy content for scrolling demonstration */
+.dummy-content {
+    height: 0; /* Make page scrollable */
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #0a2e5c;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    background: linear-gradient(to right, #0a2e5c, #1a5fad);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hospital-doctor {
+    width: 90%;
+    height: auto;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.form-container {
+    flex: 1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 32px;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1a5fad;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    border: none;
+    background-color: #1a5fad;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #0a2e5c;
+}
+
+#reset-btn {
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#back-btn {
+    background-color: transparent;
+    border: none;
+    color: #ddd;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+#back-btn:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+}
+
+/* Animation elements */
+.pulse {
+    animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+}

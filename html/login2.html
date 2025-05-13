@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocPoint -Home</title>
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login2.css">
+</head>
+<body>
+  <div id="app">
+    <div class="icon-background" id="icon-background"></div>
+    <div class="dummy-content"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-content">
+          <div class="nav-logo">
+              <img src="../img/cardiologist.gif" alt="DocPoint Logo">
+              <div class="logo-text">Doc<span>Piont</span></div>
+          </div>
+          
+          <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+          </button>
+          
+          <div class="nav-links">
+              <a href="login2.html" class="nav-link active ">Home</a>
+              
+              
+              <div class="nav-dropdown">
+                  <a class="nav-link" >Departments</a>
+                  <div class="dropdown-content" style="margin-top: 10px;">
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-cardiology-48.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Cardiology</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-surgeon-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Surgeon</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-orthopedic-64.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Orthopedics</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-head-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">ENT</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-pediatrics-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pediatrician</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-dermatology-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Dermatology</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-dentistry-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Dentistry</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-periods-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Obstetrics & Gynecology</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-oncologist-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Oncologist</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-pediatrics-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pediatrics</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-urology-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Urology</a>
+                      <a href="" class="dropdown-item" style="display: flex;  "><img src="../img/icons8-anatomy-50.png" alt="" style="display: flex;width: 25px; align-items: center; margin-right: 18px;">Pulmonology</a>
+                  </div>
+              </div>
+              <a href="learn more.html" class="nav-link">Learn More</a>
+              
+              
+          </div>
+          
+          <div class="nav-right">
+              <div class="search-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" placeholder="Search DocPoint">
+              </div>
+              
+              
+          </div>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="..//img/فيديو واتساب بتاريخ 2025-04-15 في 18.38.11_a5b8aa0e.mp4" type="video/mp4">
+          <img src="https://images.pexels.com/photos/5214949/pexels-photo-5214949.jpeg" alt="Medical background">
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+      
+    
+      
+      <button class="pause-btn" aria-label="Pause video">
+        <i class="pause-icon">❚❚</i>
+      </button>
+    </section>
+    <section class="hero">
+        
+      <div class="hero-content">
+        <h1 class="hero-title">Your Health is Our Priority</h1>
+        <p class="hero-description">Experience the finest healthcare services with our team of expert doctors and cutting-edge medical technology.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-accent" onclick="location.href='#auth-section'">Book an Appointment</button>
+          <button class="btn btn-outline" style="color: white; border-color: #34accab3;" onclick="location.href='learn more.html' ">Learn More</button>
+        </div>
+      </div>
+      
+      <div class="hero-scroll-down">
+        <span>Scroll Down</span>
+        <div class="hero-scroll-icon"></div>
+      </div>
+    </section>
+    <!-- Health Tips Section -->
+    <section class="health-tips section" id="health-tips-section">
+      <div class="container">
+        <div class="section-title animate-on-scroll">
+          <h2>Health Tips & Guidelines</h2>
+        </div>
+        <p class="section-description animate-on-scroll">
+          Expert-backed advice and guidelines to help you maintain optimal health and prevent illnesses.
+        </p>
+        
+        <div class="tips-filter animate-on-scroll" id="tips-filter"></div>
+        <div class="tips-container" id="tips-container"></div>
+      </div>
+    </section>
+
+    <!-- Doctor Articles Section -->
+    <section class="doctor-articles section" id="doctor-articles-section">
+      <div class="container">
+        <div class="section-title animate-on-scroll">
+          <h2>Articles by Our Doctors</h2>
+        </div>
+        <p class="section-description animate-on-scroll">
+          Expert insights and the latest medical research from our team of specialized healthcare professionals.
+        </p>
+        <!-- <div style="border: 5px solid red;" id="publishedComment"></div>
+   
+      
+        <script>
+          const comment = localStorage.getItem("userComment");
+          if (comment) {
+            document.getElementById("publishedComment").innerText = comment;
+          }
+        </script> -->
+        <div class="flip-cards-container" id="doctor-articles-container"></div>
+      </div>
+    </section>
+
+    <!-- Auth Section -->
+    <section class="auth-section section" id="auth-section">
+      <div class="auth-background"></div>
+      <div class="auth-container">
+        <div class="auth-info animate-on-scroll">
+          <h2 class="auth-info-title">Join Our Healthcare Platform</h2>
+          <p class="auth-info-text">Create an account to access personalized health services and resources tailored to your needs.</p>
+          
+          <ul class="auth-features">
+            <li class="auth-feature-item">
+              <i>✓</i>
+              <span>Personalized health recommendations</span>
+            </li>
+            <li class="auth-feature-item">
+              <i>✓</i>
+              <span>Online appointment booking with doctors</span>
+            </li>
+            <li class="auth-feature-item">
+              <i>✓</i>
+              <span>Access to medical records and test results</span>
+            </li>
+            <li class="auth-feature-item">
+              <i>✓</i>
+              <span>Virtual consultations with healthcare providers</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="auth-tabs animate-on-scroll" >
+          <button class="auth-tab active" data-target="login-form">Login</button>
+          <button class="auth-tab" data-target="register-form">Create Account</button>
+        </div>
+        
+        <div class="auth-forms animate-on-scroll">
+          <form class="auth-form active" id="login-form">
+            <div class="form-group">
+              <label for="login-email" class="form-label">Email</label>
+              <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required="">
+            </div>
+            
+            <div class="form-group">
+              <label for="login-password" class="form-label">Password</label>
+              <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required="">
+              <a href="forget.html" class="forgot-password">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="auth-btn" >Login</button>
+            
+            <div class="auth-divider">or continue with</div>
+            
+            <div class="social-auth">
+              <button type="button" class="social-btn">
+                <span>Google</span>
+              </button>
+              <button type="button" class="social-btn">
+                <span>Apple</span>
+              </button>
+            </div>
+            
+            <div class="auth-footer">
+              Don't have an account? <a href="#" class="switch-form" data-target="register-form">Sign up</a>
+            </div>
+          </form>
+          
+          <form class="auth-form" id="register-form">
+            <div class="form-group">
+              <label for="register-name" class="form-label">Full Name</label>
+              <input type="text" id="register-name" class="form-input" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="register-type" class="form-label">Account Type</label>
+              
+              <select name="account-type" id="type" class="form-input" required style="opacity: 0.6;">
+                <option value="account type" selected disabled>select your account type</option>
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="hospital">Hospital</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-email" class="form-label">Email</label>
+              <input type="email" id="register-email" class="form-input" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="register-Birthday" class="form-label">Birthday</label>
+              <input type="date" id="register-Birthday" class="form-input" placeholder="Enter Your Birthday Date" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-password" class="form-label">Password</label>
+              <input type="password" id="register-password" class="form-input" placeholder="Create a password" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="register-confirm-password" class="form-label">Confirm Password</label>
+              <input type="password" id="register-confirm-password" class="form-input" placeholder="Confirm your password" required>
+            </div>
+            
+            <button type="submit" class="auth-btn">Create Account</button>
+            
+            <div class="auth-footer">
+              Already have an account? <a href="#" class="switch-form" data-target="login-form">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <h3>About the medical center</h3>
+                  <p>We are an integrated medical center offering comprehensive medical services of the highest quality and care. We aim to improve the health of the community through distinguished medical services.</p>
+                 <!-- داخل القسم social-links -->
+                  <div class="social-links">
+                  <a href="https://www.facebook.com" class="fb" title="فيسبوك" target="_blank" rel="noopener"></a>
+                  <a href="https://www.twitter.com" class="tw" title="تويتر" target="_blank" rel="noopener"></a>
+                  <a href="https://www.instagram.com" class="ig" title="انستغرام" target="_blank" rel="noopener"></a>
+                  <a href="https://www.linkedin.com" class="ln" title="لينكد إن" target="_blank" rel="noopener"></a>
+                  </div>
+    
+              </div>
+              
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                <li><a href="..//html/login2.html">Home</a></li>
+                <li><a href="..//html/learn more.html">learnMore</a></li>
+                <li><a href="..//html/book.html">online consulation</a></li>
+                <li><a href="..//html/patientprof.html">proifle</a></li>
+             
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h3>department</h3>
+                <ul>
+      
+                <li><a href="..//html/cardiologist.html">cardiologist</a></li>
+                <li><a href="..//html/surgeon.html">surgeon</a></li>
+                <li><a href="..//html/Urologist.html">Urologist</a></li>
+                <li><a href="..//html/ENT.html">Ent</a></li>
+                <li><a href="..//html/Pediatrician.html">Pediatrician</a></li>
+                <li><a href="..//html/Pulmonologist.html">Pulmonologist</a></li>
+                </ul>
+            
+              </div>
+              <div class="footer-section">
+                <h3>department</h3>
+                <ul>
+                <li><a href="..//html/Dermatologist.html">Dermatologist</a></li>
+                <li><a href="..//html/Dentist.html">dentist</a></li>
+                <li><a href="..//html/GYNAECOLOGIST.HTML">Obstetrics and Gynecology</a></li>
+                <li><a href="..//html/Oncologist.html">Oncologist</a></li>
+                <li><a href="..//html/orthopedic.html">orthopedic</a></li>
+              
+              
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h3>Contact us</h3>
+                  <p class="contact-info contact-address">
+                    Health Street, Medical City
+                                </p>
+                  <p class="contact-info contact-phone">
+                      +123 456 7890
+                  </p>
+                  <p class="contact-info contact-email">
+                      info@medicalcenter.com
+                  </p>
+              </div>
+          </div>
+          
+          <div class="footer-bottom">
+            <p>&copy; 2025 Medical Center | All rights reserved</p>
+          </div>
+      </div>
+  </footer>
+  </div>
+  <script type="module" src="../js/login2.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const iconBackground = document.getElementById('icon-background');
+        const icons = [
+            '❤️', '🩺', '💊', '💉', '🧬', '🦠', '🧪', '🩸', '🫀', '🫁', '🧠', '👨‍⚕️', '👩‍⚕️', '🏥'
+        ];
+        
+        // Create more floating icons for a fuller effect
+        for (let i = 0; i < 50; i++) {
+            const icon = document.createElement('div');
+            icon.className = 'medical-icon';
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = `${Math.random() * 100}%`;
+            icon.style.fontSize = `${Math.random() * 20 + 20}px`;
+            icon.style.animationDuration = `${Math.random() * 30 + 10}s`;
+            icon.style.animationDelay = `${Math.random() * 5}s`;
+            iconBackground.appendChild(icon);
+        }
+    });
+</script>
+</body>
+</html>
