@@ -288,8 +288,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     </div>
   </div>
-  <!-- محتوى الموقع يأتي هنا -->
-    
+  
   <?php
     include_once "includes/footer.php";
   ?>
