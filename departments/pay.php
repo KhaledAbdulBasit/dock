@@ -16,83 +16,71 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }*/
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'patient') {
-    die("يجب تسجيل الدخول كمريض.");
+    die("You must be logged in as a patient.");
 }
 
 
 if (!isset($_SESSION['doctor'], $_SESSION['price'], $_SESSION['appointment'], $_SESSION['type'])) {
-    die("بيانات الاستشارة غير متوفرة.");
+    die("Consultation data is not available.");
 }
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $card_number=$_POST['card_number'];
-    $expiry_date=$_POST['expiry_date'];
-    $cvv=$_POST['cvv'];
-    $mobile_number=$_POST['mobile_number'];
+    $card_number = $_POST['card_number'];
+    $expiry_date = $_POST['expiry_date'];
+    $cvv = $_POST['cvv'];
+    $mobile_number = $_POST['mobile_number'];
     
-    
-    // Prepare SQL statement (fixed column names and removed quotes around column names)
-    $sql = "INSERT INTO payments (card_number, expiry_date, cvv,mobile_number) VALUES (?, ?, ?, ?)";
+    // Insert payment details
+    $sql = "INSERT INTO payments (card_number, expiry_date, cvv, mobile_number) VALUES (?, ?, ?, ?)";
     
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
     
-    $stmt->bind_param("ssss", $card_number, $expiry_date, $cvv,$mobile_number);
+    $stmt->bind_param("ssss", $card_number, $expiry_date, $cvv, $mobile_number);
     
     if ($stmt->execute()) {
-
-        $doctor     = $_SESSION['doctor'];
-        $price      = $_SESSION['price'];
+        $doctor = $_SESSION['doctor'];
+        $price = $_SESSION['price'];
         $appointment = $_SESSION['appointment'];
         $appointment_id = $_SESSION['appointment']['id'];
-        $type       = $_SESSION['type'];
+        $type = $_SESSION['type'];
         $patient_id = $_SESSION['user_id'];
         
-        
-        
-        
-        // إدراج الاستشارة
+        // Insert consultation
         $stmt = $conn->prepare("
             INSERT INTO consultations 
-            (patient_id, doctor_id, type,appointment_id)
+            (patient_id, doctor_id, type, appointment_id)
             VALUES (?, ?, ?, ?)
         ");
-        $stmt->bind_param("iisi", $patient_id, $doctor['id'], $type,$appointment_id);
+        $stmt->bind_param("iisi", $patient_id, $doctor['id'], $type, $appointment_id);
         
         if ($stmt->execute()) {
-
-
-        $stmt = $conn->prepare("UPDATE appointments SET Booking='Closed' WHERE id=?");
-        $stmt->bind_param("i", $appointment_id);
+            $stmt = $conn->prepare("UPDATE appointments SET Booking='Closed' WHERE id=?");
+            $stmt->bind_param("i", $appointment_id);
       
-        if ($stmt->execute()) {
-            $success = "Data updated successfully.";
+            if ($stmt->execute()) {
+                $success = "Data updated successfully.";
+            } else {
+                $errors[] = "An error occurred during the update.";
+            }
+            $stmt->close();
 
-        } else {
-            $errors[] = "An error occurred during the update.";
-        }
-        $stmt->close();
-
-            // إزالة بيانات الاستشارة من السيشن بعد الحجز الناجح
+            // Remove consultation data from session after successful booking
             unset($_SESSION['doctor'], $_SESSION['price'], $_SESSION['appointment'], $_SESSION['type']);
         
-            echo "<h2>تم الدفع بنجاح!</h2>";
-            echo "<p>تم حجز استشارتك مع الدكتور " . htmlspecialchars($doctor['name']) . ".</p>";
-            echo "<p>الميعاد: " . htmlspecialchars($appointment['time']) . "</p>";
-            echo "<p>نوع الاستشارة: " . ($type === 'online' ? "online" : "في العيادة") . "</p>";
-            echo "<a href='../patient.php'>العودة للوحة التحكم</a>";
-            header( "refresh:5;url=../patient.php" );
+            echo "<h2>Payment Successful!</h2>";
+            echo "<p>Your consultation has been booked with Dr. " . htmlspecialchars($doctor['name']) . ".</p>";
+            echo "<p>Appointment Time: " . htmlspecialchars($appointment['time']) . "</p>";
+            echo "<p>Consultation Type: " . ($type === 'online' ? "Online" : "In Clinic") . "</p>";
+            echo "<a href='../patient.php'>Return to Dashboard</a>";
+            header("refresh:5;url=../patient.php");
         } else {
-            echo "حدث خطأ أثناء الحجز: " . $stmt->error;
+            echo "An error occurred during booking: " . $stmt->error;
         }
-
-
-
-
-        exit(); // Always use exit after header redirect
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -715,7 +703,7 @@ paymentForm.addEventListener('submit', (e) => {
     
     // Check if the form is valid before proceeding
     if (!paymentForm.checkValidity()) {
-        alert("يرجى ملء جميع الحقول المطلوبة بشكل صحيح."); // Alert message in Arabic
+        alert("Please fill in all required fields correctly.");
         return;
     }
     // Get email from form

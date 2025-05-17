@@ -384,19 +384,15 @@ include_once "../includes/database.php";
    
         
     .footer {
-    
     opacity: 1;
     background-color: #212121;
     color: #fff;
     padding: 40px 0;
-    /* margin-top: 50px; */
     position: relative;
-    /* direction: rtl;
-    text-align: right; */
-  }
-  
-  /* إضافة طبقة شفافة للخلفية لتحسين قراءة النص */
-  .footer::before {
+}
+
+/* Add transparent background layer for better text readability | إضافة طبقة شفافة للخلفية لتحسين قراءة النص */
+.footer::before {
     content: '';
     position: absolute;
     top: 0;
@@ -408,9 +404,9 @@ include_once "../includes/database.php";
     background-size: 200% 100%;
     animation: borderWave 4s infinite alternate;
     z-index: 1;
-  }
-  
-  .footer-container {
+}
+
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
     /* padding: 0 20px; */
@@ -439,7 +435,7 @@ include_once "../includes/database.php";
     display: inline-block;
   }
   
-  /* إضافة خط تحت العنوان مع حركة */
+  /* Add underline animation for headings | إضافة خط تحت العنوان مع حركة */
   .footer-section h3::after {
     content: "";
     position: absolute;
@@ -472,7 +468,7 @@ include_once "../includes/database.php";
     display: inline-block;
   }
   
-  /* إضافة سهم قبل الروابط */
+  /* Add arrow before links | إضافة سهم قبل الروابط */
   .footer-section ul li a::before {
     content: "›";
     position: absolute;
@@ -504,7 +500,7 @@ include_once "../includes/database.php";
     margin-top: 20px;
   }
   
-  /* تصميم أزرار التواصل الاجتماعي باستخدام CSS فقط */
+  /* Style social media buttons using CSS only | تصميم أزرار التواصل الاجتماعي باستخدام CSS فقط */
   .social-links a {
     width: 40px;
     height: 40px;
@@ -526,7 +522,7 @@ include_once "../includes/database.php";
     box-shadow: 0 5px 15px #0078d4;
   }
   
-  /* أيقونات مواقع التواصل باستخدام CSS فقط */
+  /* Social media icons using CSS only | أيقونات مواقع التواصل باستخدام CSS فقط */
   .social-links .fb::before {
     content: "f";
     font-weight: bold;
@@ -551,7 +547,7 @@ include_once "../includes/database.php";
     font-size: 16px;
   }
   
-  /* تأثير تموج عند الضغط */
+  /* Add ripple effect on click | تأثير تموج عند الضغط */
   .social-links a::after {
     content: "";
     position: absolute;
@@ -576,6 +572,7 @@ include_once "../includes/database.php";
     padding-left: 30px;
   }
   
+  /* Contact icons using CSS only | أيقونات الاتصال باستخدام CSS فقط */
   /* أيقونات الاتصال باستخدام CSS فقط */
   .contact-info::before {
     position: absolute;

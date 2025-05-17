@@ -7,23 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 include_once "includes/database.php";
 
-
 $table = $_SESSION['user_table'];
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 
-// الاتصال بقاعدة البيانات
-$conn = new mysqli("localhost", "root", "", "dock");
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-}
 
-// استلام البيانات
-
+// Receive form data
 $name = $_POST['name'] ?? '';
 $services = $_POST['services'] ?? '';
 
-// جلب الصورة القديمة من قاعدة البيانات
+// Get old image from database
 $stmt = $conn->prepare("SELECT image FROM hospitals WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -34,8 +27,8 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-// معالجة رفع الصورة
-$new_image_path = $old_image; // بشكل افتراضي، استخدم الصورة القديمة
+// Handle image upload
+$new_image_path = $old_image; // Default: use old image
 
 if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
     $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
@@ -52,29 +45,29 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
         $target_file = $upload_dir . $new_file_name;
 
         if (move_uploaded_file($file_tmp_path, $target_file)) {
-            $new_image_path = $target_file; // استخدم الصورة الجديدة
+            $new_image_path = $target_file; // Use new image
         } else {
-            echo "فشل في رفع الصورة.";
+            echo "Failed to upload image.";
             exit();
         }
     } else {
-        echo "نوع الملف غير مدعوم. يُسمح فقط بـ JPG و PNG و GIF.";
+        echo "File type not supported. Only JPG, PNG, and GIF are allowed.";
         exit();
     }
 }
 
-// تحديث البيانات في قاعدة البيانات
+// Update data in database
 $update_stmt = $conn->prepare("UPDATE hospitals SET name = ?, services = ?, image = ? WHERE id = ?");
 $update_stmt->bind_param("sssi", $name, $services, $new_image_path, $user_id);
 
 if ($update_stmt->execute()) {
     echo "<script>
-    alert('تم تحديث البيانات بنجاح!');
+    alert('Data updated successfully!');
     window.location.href = 'http://localhost/dock/hospital.php';
     </script>";
     exit();
 } else {
-    echo "خطأ في تحديث البيانات: " . $update_stmt->error;
+    echo "Error updating data: " . $update_stmt->error;
 }
 
 $update_stmt->close();

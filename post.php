@@ -1,6 +1,6 @@
 <?php session_start();
 
-// التحقق من وجود ID
+// Check for ID existence
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
   die("Invalid post ID.");
 }
@@ -9,7 +9,7 @@ $post_id = (int)$_GET['id'];
 
 include_once "includes/database.php";
 
-// جلب بيانات المقال مع اسم الدكتور
+// Get article data with doctor name
 $sql = "SELECT a.title, a.content, a.image post_image, a.created_at,d.id, d.name,d.specialization,d.image
       FROM posts a
       JOIN doctors d ON a.doctor_id = d.id
@@ -20,7 +20,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-  echo "المقال غير موجود.";
+  echo "Article not found";
   exit;
 }
 
@@ -35,7 +35,7 @@ $post = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars(string: $post['title']) ?></title>
+    <title><?= htmlspecialchars($post['title']) ?></title>
     <link rel="stylesheet" href="css/patient.css">
 </head>
 <script src="js/patient.js"></script>
@@ -57,7 +57,7 @@ $post = $result->fetch_assoc();
   <div class="hero">
 
     <?php if (!empty($post['post_image']) && file_exists($post['post_image'])){ ?>
-      <img src="<?= htmlspecialchars($post['post_image']) ?>" alt="صورة المقال"  class="background" />
+      <img src="<?= htmlspecialchars($post['post_image']) ?>" alt="Article Image"  class="background" />
     <?php } else { ?>
       <img src="img/background.jpeg" alt="Background" />
       <?php }?>
@@ -74,11 +74,11 @@ $post = $result->fetch_assoc();
       <div class="article-card">
       <?php if (!empty($post['image']) && file_exists($post['image'])){ ?>
       <div class="doctor-image">
-        <img src="<?= htmlspecialchars($post['image']) ?>" alt="<?= htmlspecialchars($post['name']) ?>" title="<?= htmlspecialchars($post['name']) ?>">
+        <img src="<?= htmlspecialchars($post['image']) ?>" alt="Dr. <?= htmlspecialchars($post['name']) ?>" title="Dr. <?= htmlspecialchars($post['name']) ?>">
       </div>
       <?php } ?>
       <div class="content">
-        <h2 class="doctor-name"><?= htmlspecialchars($post['name']) ?></h2>
+        <h2 class="doctor-name">Dr. <?= htmlspecialchars($post['name']) ?></h2>
           <?php if (!empty($post['specialization'])){ ?>
           <p class="doctor-specialty"><?= htmlspecialchars($post['specialization']) ?></p>
           <?php }?>
@@ -99,8 +99,8 @@ $post = $result->fetch_assoc();
    
  <!---->
 <div class="u">
-  <button class="neu-button" onclick="findNearby('hospital')" >🏥 Nearest hospital</button>
-  <button class="neu-button" onclick="findNearby('pharmacy')">💊 Nearest pharmacy</button>
+  <button class="neu-button" onclick="findNearby('hospital')" >🏥 Nearest Hospital</button>
+  <button class="neu-button" onclick="findNearby('pharmacy')">💊 Nearest Pharmacy</button>
 </div>
 <br>
 <?php

@@ -4,8 +4,8 @@
 
 
     if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'patient') {
-        // المستخدم غير مسجل دخول أو ليس مريض
-        header("Location: index.php"); // أو أي صفحة تسجيل دخول/رفض الوصول
+        // User is not logged in or is not a patient
+        header("Location: index.php"); // Redirect to login/access denied page
         exit();
     }
     
@@ -52,9 +52,9 @@
 
 
 
-// عند إرسال النموذج
+// When form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // استقبال البيانات والتحقق
+    // Receive and validate data
     $name       = trim($_POST['name']);
     $ssn        = trim($_POST['ssn']);
     $gender     = $_POST['gender'];
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $height     = floatval($_POST['height']);
     $weight     = floatval($_POST['weight']);
 
-    // تحقق من الحقول
+    // Validate fields
     if (empty($name) || strlen($name) < 3) $errors[] = "Name is required and must be at least 3 characters long.";
     if (!preg_match('/^\d{14}$/', $ssn)) $errors[] = "Invalid national ID number.";
     if (!in_array($gender, ['male', 'female'])) $errors[] = "Invalid gender.";
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 
 
-    // التعامل مع رفع صورة جديدة
+    // Handle new image upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $fileTmp  = $_FILES['image']['tmp_name'];
         $fileName = $_FILES['image']['name'];
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $allowed = ['jpg', 'jpeg', 'png', 'webp'];
 
         if (!in_array($ext, $allowed)) {
-            $errors[] = "امتداد الصورة غير مسموح به.";
+            $errors[] = "Image extension is not allowed.";
         } else {
 
             $stmt = $conn->prepare("SELECT image FROM patients WHERE id = ?");

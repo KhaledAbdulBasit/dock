@@ -5,12 +5,12 @@
             <div class="footer-section">
                 <h3>About the medical center</h3>
                 <p>We are an integrated medical center offering comprehensive medical services of the highest quality and care. We aim to improve the health of the community through distinguished medical services.</p>
-               <!-- داخل القسم social-links -->
+                <!-- Social Links Section -->
                 <div class="social-links">
-                <a href="https://www.facebook.com" class="fb" title="فيسبوك" target="_blank" rel="noopener"></a>
-                <a href="https://www.twitter.com" class="tw" title="تويتر" target="_blank" rel="noopener"></a>
-                <a href="https://www.instagram.com" class="ig" title="انستغرام" target="_blank" rel="noopener"></a>
-                <a href="https://www.linkedin.com" class="ln" title="لينكد إن" target="_blank" rel="noopener"></a>
+                <a href="https://www.facebook.com" class="fb" title="Facebook" target="_blank" rel="noopener"></a>
+                <a href="https://www.twitter.com" class="tw" title="Twitter" target="_blank" rel="noopener"></a>
+                <a href="https://www.instagram.com" class="ig" title="Instagram" target="_blank" rel="noopener"></a>
+                <a href="https://www.linkedin.com" class="ln" title="LinkedIn" target="_blank" rel="noopener"></a>
                 </div>
   
             </div>

@@ -46,10 +46,10 @@ $posts_ = $stmt->get_result();
   <br>
   <div class="contaier">
     <h1>Medical Departments</h1>
-    <!-- الصف الأول -->
+    <!-- First Row -->
     <div class="departments-slider" id="slider1">
     <?php while ($department = $departments_->fetch_assoc()):?>
-      <!-- قسم القلب -->
+      <!-- Department Card -->
       <div class="department-card">
         <div class="icon-wrapper">
           <img src="<?= BASE_URL  .htmlspecialchars($department['icon']) ?>" alt="<?= htmlspecialchars(ucfirst($department['name'])) ?>" style="width: 200%; height: 200%; object-fit: contain;">
@@ -68,143 +68,143 @@ $posts_ = $stmt->get_result();
   <div class="articles-container" id="articlesWrapper">
     <div class="article-card">
       <div class="doctor-image">
-        <img src="img/دكتور اسنان.jpg" alt="دكتور أحمد محمد">
-    </div>
+        <img src="img/دكتور اسنان.jpg" alt="دكتور أحمد محمد - Dr. Ahmed Mohammed">
+      </div>
       <div class="content">
-        <h2 class="doctor-name">DR Ahmed Mohammed</h2>
-                  <p class="doctor-specialty">Heart and blood vessels</p>
-                  <div class="doctor-rating">
-                      <span class="rating-number">4.9</span>
-                      <span class="stars">★★★★★</span>
-                  </div>
-                  <div class="availability"><i class="fas fa-check-circle"></i>Available today </div>
-                  <div class="doctor-info">
-                      <div class="info-item">
-                          <i class="fas fa-user-md"></i>
-                          <span>years experience 3</span>
-                      </div>
-                      <div class="info-item">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>AL Amal Specialized Hospital</span>
-                      </div>
-                  </div>
-                  <button class="book-button">
-                      <i class="fas fa-calendar-check"></i>
-                      <a href="<?= BASE_URL ?>departments/book.php">Book an Appointment</a>
-                  </button>
+        <h2 class="doctor-name">دكتور أحمد محمد<br>Dr. Ahmed Mohammed</h2>
+        <p class="doctor-specialty">القلب والأوعية الدموية<br>Heart and Blood Vessels</p>
+        <div class="doctor-rating">
+            <span class="rating-number">4.9</span>
+            <span class="stars">★★★★★</span>
+        </div>
+        <div class="availability"><i class="fas fa-check-circle"></i>متاح اليوم | Available today</div>
+        <div class="doctor-info">
+            <div class="info-item">
+                <i class="fas fa-user-md"></i>
+                <span>سنوات الخبرة: 3 | Experience: 3 years</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>مستشفى الأمل التخصصي | AL Amal Specialized Hospital</span>
+            </div>
+        </div>
+        <button class="book-button">
+            <i class="fas fa-calendar-check"></i>
+            <a href="<?= BASE_URL ?>departments/book.php">احجز موعد | Book an Appointment</a>
+        </button>
       </div>
     </div>
     
     <div class="article-card">
       <div class="doctor-image">
-        <img src="img/دكتوره العيون.jpg" alt="دكتورة سارة أحمد">
-    </div>
-      <div class="content">
-        <h2 class="doctor-name">DR Sara Ali</h2>
-                  <p class="doctor-specialty">Pediatrician</p>
-                  <div class="doctor-rating">
-                      <span class="rating-number">4.8</span>
-                      <span class="stars">★★★★★</span>
-                  </div>
-                  <div class="availability"><i class="fas fa-check-circle"></i>Available tomorrow</div>
-                  <div class="doctor-info">
-                      <div class="info-item">
-                          <i class="fas fa-user-md"></i>
-                          <span>years experience 2</span>
-                      </div>
-                      <div class="info-item">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>Health Care Center</span>
-                      </div>
-                  </div>
-                  <button class="book-button">
-                      <i class="fas fa-calendar-check"></i>
-                      <a href="<?= BASE_URL ?>departments/book.php">Book an Appointment</a>
-                  </button>
+        <img src="img/دكتوره العيون.jpg" alt="دكتورة سارة أحمد - Dr. Sara Ahmed">
       </div>
-    </div>
-    <div class="article-card">
-      <div class="doctor-image">
-        <img src="img/دكتور اطفال.jpg" alt="دكتور محمد علي">
-    </div>
       <div class="content">
-        <h2 class="doctor-name">DR Mohammed Ali</h2>
-        <p class="doctor-specialty">Ophthalmologist</p>
+        <h2 class="doctor-name">دكتورة سارة أحمد<br>Dr. Sara Ahmed</h2>
+        <p class="doctor-specialty">طب الأطفال<br>Pediatrician</p>
         <div class="doctor-rating">
-            <span class="rating-number">4.7</span>
+            <span class="rating-number">4.8</span>
             <span class="stars">★★★★★</span>
         </div>
-        <div class="availability"><i class="fas fa-check-circle"></i>Available today</div>
+        <div class="availability"><i class="fas fa-check-circle"></i>متاح غداً | Available tomorrow</div>
         <div class="doctor-info">
             <div class="info-item">
                 <i class="fas fa-user-md"></i>
-                <span>years experience 1</span>
+                <span>سنوات الخبرة: 2 | Experience: 2 years</span>
             </div>
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>AL Noor Specialized Hospital</span>
+                <span>مركز الرعاية الصحية | Health Care Center</span>
             </div>
         </div>
         <button class="book-button">
             <i class="fas fa-calendar-check"></i>
-            <a href="<?= BASE_URL ?>departments/book.php">Book an Appointment</a>
+            <a href="<?= BASE_URL ?>departments/book.php">احجز موعد | Book an Appointment</a>
         </button>
       </div>
     </div>
     <div class="article-card">
       <div class="doctor-image">
-        <img src="img/دكتور قلب.jpg" alt="دكتور خالد محمود">
-    </div>
+        <img src="img/دكتور اطفال.jpg" alt="دكتور محمد علي - Dr. Mohammed Ali">
+      </div>
       <div class="content">
-        <h2 class="doctor-name">DR Khaled Mahmoud</h2>
-                  <p class="doctor-specialty">General Surgery</p>
-                  <div class="doctor-rating">
-                      <span class="rating-number">4.6</span>
-                      <span class="stars">★★★★★</span>
-                  </div>
-                  <div class="availability"><i class="fas fa-check-circle"></i>Available wednesday</div>
-                  <div class="doctor-info">
-                      <div class="info-item">
-                          <i class="fas fa-user-md"></i>
-                          <span>years experience 8</span>
-                      </div>
-                      <div class="info-item">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>International Medical Center</span>
-                      </div>
-                  </div>
-                  <button class="book-button">
-                      <i class="fas fa-calendar-check"></i>
-                      <a href="<?= BASE_URL ?>departments/book.php">Book an Appointment</a>
-                  </button>
+        <h2 class="doctor-name">دكتور محمد علي<br>Dr. Mohammed Ali</h2>
+        <p class="doctor-specialty">طب العيون<br>Ophthalmologist</p>
+        <div class="doctor-rating">
+            <span class="rating-number">4.7</span>
+            <span class="stars">★★★★★</span>
+        </div>
+        <div class="availability"><i class="fas fa-check-circle"></i>متاح اليوم | Available today</div>
+        <div class="doctor-info">
+            <div class="info-item">
+                <i class="fas fa-user-md"></i>
+                <span>سنوات الخبرة: 1 | Experience: 1 year</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>مستشفى النور التخصصي | AL Noor Specialized Hospital</span>
+            </div>
+        </div>
+        <button class="book-button">
+            <i class="fas fa-calendar-check"></i>
+            <a href="<?= BASE_URL ?>departments/book.php">احجز موعد | Book an Appointment</a>
+        </button>
       </div>
     </div>
     <div class="article-card">
       <div class="doctor-image">
-        <img src="img/sahar-abdelmonem-gynaecology-and-infertility_20250217224541824.jpg" alt="دكتورة مها سعيد">
-    </div>
+        <img src="img/دكتور قلب.jpg" alt="دكتور خالد محمود - Dr. Khaled Mahmoud">
+      </div>
       <div class="content">
-        <h2 class="doctor-name">DR Maha Saeed </h2>
-                  <p class="doctor-specialty">Obstetrics and Gynecology</p>
-                  <div class="doctor-rating">
-                      <span class="rating-number">4.9</span>
-                      <span class="stars">★★★★★</span>
-                  </div>
-                  <div class="availability"><i class="fas fa-check-circle"></i>Available today</div>
-                  <div class="doctor-info">
-                      <div class="info-item">
-                          <i class="fas fa-user-md"></i>
-                          <span>years experience 5</span>
-                      </div>
-                      <div class="info-item">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>AL Salam Hospital</span>
-                      </div>
-                  </div>
-                  <button class="book-button">
-                      <i class="fas fa-calendar-check"></i>
-                      <a href="<?= BASE_URL ?>departments/book.php">Book an Appointment</a>
-                  </button>
+        <h2 class="doctor-name">دكتور خالد محمود<br>Dr. Khaled Mahmoud</h2>
+        <p class="doctor-specialty">الجراحة العامة<br>General Surgery</p>
+        <div class="doctor-rating">
+            <span class="rating-number">4.6</span>
+            <span class="stars">★★★★★</span>
+        </div>
+        <div class="availability"><i class="fas fa-check-circle"></i>متاح الأربعاء | Available Wednesday</div>
+        <div class="doctor-info">
+            <div class="info-item">
+                <i class="fas fa-user-md"></i>
+                <span>سنوات الخبرة: 8 | Experience: 8 years</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>المركز الطبي الدولي | International Medical Center</span>
+            </div>
+        </div>
+        <button class="book-button">
+            <i class="fas fa-calendar-check"></i>
+            <a href="<?= BASE_URL ?>departments/book.php">احجز موعد | Book an Appointment</a>
+        </button>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="doctor-image">
+        <img src="img/sahar-abdelmonem-gynaecology-and-infertility_20250217224541824.jpg" alt="دكتورة مها سعيد - Dr. Maha Saeed">
+      </div>
+      <div class="content">
+        <h2 class="doctor-name">دكتورة مها سعيد<br>Dr. Maha Saeed</h2>
+        <p class="doctor-specialty">النساء والتوليد<br>Obstetrics and Gynecology</p>
+        <div class="doctor-rating">
+            <span class="rating-number">4.9</span>
+            <span class="stars">★★★★★</span>
+        </div>
+        <div class="availability"><i class="fas fa-check-circle"></i>متاح اليوم | Available today</div>
+        <div class="doctor-info">
+            <div class="info-item">
+                <i class="fas fa-user-md"></i>
+                <span>سنوات الخبرة: 5 | Experience: 5 years</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>مستشفى السلام | AL Salam Hospital</span>
+            </div>
+        </div>
+        <button class="book-button">
+            <i class="fas fa-calendar-check"></i>
+            <a href="<?= BASE_URL ?>departments/book.php">احجز موعد | Book an Appointment</a>
+        </button>
       </div>
     </div>
     
@@ -224,7 +224,7 @@ $posts_ = $stmt->get_result();
     <?php while ($post = $posts_->fetch_assoc()):
       
         
-    $words = explode(" ", strip_tags($post['content'])); // إزالة أي وسوم HTML
+    $words = explode(" ", strip_tags($post['content'])); // Remove any HTML tags
     $content = implode(" ", array_slice($words, 0, 15)) . '...';
       ?>
       <div class="article-card">

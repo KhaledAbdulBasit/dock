@@ -2,8 +2,8 @@
     include_once "includes/database.php";
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'doctor') {
-  // المستخدم غير مسجل دخول أو ليس دكتور
-  header("Location: index.php"); // أو أي صفحة تسجيل دخول/رفض الوصول
+  // User is not logged in or is not a doctor
+  header("Location: index.php"); // Redirect to login/access denied page
   exit();
 }
 
@@ -17,7 +17,7 @@ $success = "";
 $success_appointments = "";
 $success_medical_records = "";
 
-$words = explode(" ", strip_tags($_SESSION['user_name'])); // إزالة أي وسوم HTML
+$words = explode(" ", strip_tags($_SESSION['user_name'])); // Remove any HTML tags
 $content = implode(" ", array_slice($words, 0, 1));
 
 $sql = "SELECT * FROM posts WHERE doctor_id  = ? LIMIT 10";
@@ -40,25 +40,25 @@ $appointments = $stmt->get_result();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST['form_type'] === 'form1' ) {
-  // استقبال البيانات والتحقق
-  $title       = trim($_POST['title']);
-  $content        = trim($_POST['content']);
+  // Receive and validate data
+  $title = trim($_POST['title']);
+  $content = trim($_POST['content']);
 
-  // تحقق من الحقول
+  // Validate fields
   if (empty($title) || strlen($title) < 10) $errors[] = "Title is required and must be at least 10 characters long.";
   if (empty($content) || strlen($content) < 20) $errors[] = "Content is required and must be at least 20 characters long.";
   
 
 
-  // التعامل مع رفع صورة جديدة
+  // Handle new image upload
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-      $fileTmp  = $_FILES['image']['tmp_name'];
+      $fileTmp = $_FILES['image']['tmp_name'];
       $fileName = $_FILES['image']['name'];
       $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
       $allowed = ['jpg', 'jpeg', 'png', 'webp'];
 
       if (!in_array($ext, $allowed)) {
-          $errors[] = "امتداد الصورة غير مسموح به.";
+          $errors[] = "Image extension is not allowed.";
       } else {
 
           $stmt = $conn->prepare("SELECT image FROM posts WHERE id = ?");
@@ -111,18 +111,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
   $doctor_id = (int) $user_id;
   $appointment_datetime = $_POST['time'];
 
-  // التحقق أن الموعد ليس في الماضي
+  // Check if appointment is not in the past
   $now = date('Y-m-d H:i:s');
   if ($appointment_datetime < $now) {
-      echo  "لا يمكن حجز موعد في الماضي";
+      echo "Cannot book an appointment in the past";
       exit;
   }
 
-  // حساب الفترة من -20 إلى +20 دقيقة من وقت الحجز المطلوب
+  // Calculate period from -20 to +20 minutes from requested appointment time
   $start_range = date('Y-m-d H:i:s', strtotime($appointment_datetime) - 20 * 60);
-  $end_range   = date('Y-m-d H:i:s', strtotime($appointment_datetime) + 20 * 60);
+  $end_range = date('Y-m-d H:i:s', strtotime($appointment_datetime) + 20 * 60);
 
-  // التحقق من وجود أي مواعيد متداخلة لنفس الطبيب
+  // Check for overlapping appointments for the same doctor
   $stmt = $conn->prepare("
       SELECT COUNT(*) 
       FROM appointments 
@@ -136,15 +136,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
   $stmt->close();
 
   if ($count > 0) {
-    $errors_appointments[] = "يوجد موعد آخر في نفس الفترة (±20 دقيقة)";
+    $errors_appointments[] = "There is another appointment in the same period (±20 minutes)";
   } else {
-    // حجز الموعد
+    // Book the appointment
     $insert = $conn->prepare("INSERT INTO appointments (doctor_id, time) VALUES (?, ?)");
     $insert->bind_param("is", $doctor_id, $appointment_datetime);
     if ($insert->execute()) {
-      $success_appointments = "✅ تم الحجز بنجاح";
+      $success_appointments = "✅ Appointment booked successfully";
     } else {
-      $errors_appointments[] = "خطأ أثناء الحجز: " . $insert->error;
+      $errors_appointments[] = "Error during booking: " . $insert->error;
     }
     $insert->close();
   }
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
     $diagnosis       = trim($_POST['diagnosis']);
     $treatment       = trim($_POST['treatment']);
 
-    // 1. التحقق من وجود الاستشارة
+    // 1. Check if consultation exists
     $check_consult = $conn->prepare("
         SELECT COUNT(*) FROM consultations
         WHERE id = ? AND doctor_id = ? AND patient_id = ?
@@ -171,11 +171,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
     $check_consult->close();
 
     if ($exists == 0) {
-        echo "❌ لا توجد استشارة بهذا الرقم بين هذا الطبيب والمريض";
+        echo "❌ No consultation found with this ID between this doctor and patient";
         exit;
     }
 
-    // 2. التحقق من عدم وجود تشخيص مسبق
+    // 2. Check for existing diagnosis
     $check_duplicate = $conn->prepare("
         SELECT COUNT(*) FROM medical_records
         WHERE consultation_id = ?
@@ -187,20 +187,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
     $check_duplicate->close();
 
     if ($already_diagnosed > 0) {
-        echo "❌ هذا المريض تم تشخيصه مسبقاً لهذه الاستشارة";
+        echo "❌ This patient has already been diagnosed for this consultation";
         exit;
     }
 
-    // 3. إدخال السجل
+    // 3. Save the diagnosis
     $insert = $conn->prepare("
         INSERT INTO medical_records (consultation_id, diagnosis, patient_id, doctor_id, treatment)
         VALUES (?, ?, ?, ?, ?)
     ");
     $insert->bind_param("issis", $consultation_id, $diagnosis, $patient_id, $doctor_id, $treatment);
     if ($insert->execute()) {
-        $success_medical_records = "✅ تم حفظ التشخيص بنجاح";
+        $success_medical_records = "✅ Diagnosis saved successfully";
     } else {
-        echo "❌ خطأ أثناء حفظ التشخيص: " . $insert->error;
+        echo "❌ Error saving diagnosis: " . $insert->error;
     }
     $insert->close();
 
@@ -208,18 +208,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST['form_type'] === 'form4' ) {
 
-  // الحصول على المدخلات بأمان
+  // Get inputs safely
   $ssn = trim($_POST['ssn']);
   $diagnosis = trim($_POST['diagnosis']);
   $treatment = trim($_POST['treatment']);
 
-  // فحص وجود doctor_id في السيشن
+  // Check for doctor_id in session
   if (!isset($_SESSION['user_id'])) {
       die("Access denied. Doctor is not logged in.");
   }
   $doctor_id = $_SESSION['user_id'];
 
-  // ⚠️ التحقق من الفالديشن
+  // Validation checks
   $errors = [];
 
   if (!preg_match('/^\d{14}$/', $ssn)) {
@@ -245,13 +245,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
     exit;
   }
   
-  // الحصول على doctor_id من السيشن
+  // Get doctor_id from session
   if (!isset($_SESSION['user_id'])) {
     die("Doctor is not logged in.");
   }
   $doctor_id = $_SESSION['user_id'];
   
-  // ابحث عن المريض باستخدام SSN
+  // Search for patient using SSN
   $stmt = $conn->prepare("SELECT id FROM patients WHERE ssn = ?");
   $stmt->bind_param("s", $ssn);
   $stmt->execute();
@@ -260,7 +260,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
   if ($row = $result->fetch_assoc()) {
     $patient_id = $row['id'];
   
-    // أضف السجل الطبي
+    // Add medical record
     $stmt = $conn->prepare("INSERT INTO medical_records (diagnosis, patient_id, doctor_id, treatment) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("siis", $diagnosis, $patient_id, $doctor_id, $treatment);
     
@@ -273,7 +273,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_type']) && $_POST
   } else {
     $error_message = "Patient with SSN $ssn not found. Record not saved.";
   }
-
 }
 
 ?>

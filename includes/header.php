@@ -103,7 +103,7 @@ $departments = $stmt->get_result();
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="<?= BASE_URL ?>logout.php" class="nav-link" id="logout">Log Out</a>
             <?php else: ?>
-                <!-- عرض زر Login إذا لم يكن المستخدم مسجل دخول -->
+                <!-- Show Login button if user is not logged in -->
                 <a href="<?= BASE_URL ?>index.php#auth-section" class="nav-link">Login</a>
             <?php endif; ?>
         </div>

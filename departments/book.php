@@ -1,19 +1,18 @@
 <?php session_start();
 
-// التحقق من وجود ID
+// Check for ID existence
 if (!isset($_GET['id']) || !is_numeric($_GET['id']) || $_GET['id'] <= 0 ) {
   die("Invalid doctor ID.");
 }
 
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'patient') {
-  die("يجب تسجيل الدخول كمريض للوصول إلى هذه الصفحة.");
+  die("You must be logged in as a patient to access this page.");
 }
-
-
 
 $doctor_id = (int)$_GET['id'];
 include_once "../includes/database.php";
 
+// Get doctor information
 $sql = "SELECT d.name,d.working_hours,h.name as hospital_name ,dp.name as department_name FROM doctors d
 left outer join departments dp on dp.id = d.department_id 
 left outer join hospitals h on h.id = d.hospital_id 
@@ -28,88 +27,80 @@ if (!$doctor) {
     die("Doctor not found.");
 }
 
-
+// Get available appointments
 $sql = "SELECT id , time FROM appointments WHERE Booking = 'Available' and time > CURRENT_TIMESTAMP and doctor_id  = ? LIMIT 10";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $doctor_id);
 $stmt->execute();
 $appointments = $stmt->get_result();
 
-
-
-// التحقق من وجود ID
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
+    // Read data
+    $patient_id = $_SESSION['user_id'];
+    $type = $_POST['type'];
+    $appointment = $_POST['time'];
+    $consultation_id = $_POST['time'];
+    $appointment_time = strtotime($appointment);
 
-  // 3. قراءة البيانات
-$patient_id = $_SESSION['user_id'];
-//$doctor_id = intval($_POST['doctor_id']);
-$type = $_POST['type'];
-$appointment = $_POST['time'];
-$consultation_id  = $_POST['time'];
-$appointment_time = strtotime($appointment);
+    $now = time();
+    if ($appointment_time <= $now) {
+        die("A date must be chosen in the future.");
+    }
 
-$now = time();
-if ($appointment_time <= $now) {
-  die("يجب اختيار موعد في المستقبل");
-}
+    // Verify appointment availability
+    $sql = "SELECT * FROM appointments WHERE Booking = 'Available' and time > CURRENT_TIMESTAMP and doctor_id = ? LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $doctor_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $appointment = $result->fetch_assoc();
 
-$sql = "SELECT *  FROM appointments WHERE Booking = 'Available' and time > CURRENT_TIMESTAMP and doctor_id  = ? LIMIT 1";
+    if (!$appointment) {
+        die("No available appointments found.");
+    }
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $doctor_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$appointment = $result->fetch_assoc();
+    $types = array('clinic', 'online');
+    if(!in_array($type, $types, true)){
+        die("Please select a valid consultation type");
+    }
 
-if (!$appointment) {
-    die("Doctor not found.");
-}
+    // 5. Check if there is a consultation for the same patient and doctor on the same day
+    $appointment_date = date("Y-m-d", $appointment_time); // Today only without time
+    $stmt = $conn->prepare("
+        SELECT id FROM consultations 
+        WHERE patient_id = ? AND doctor_id = ? AND DATE(created_at) = ?
+    ");
+    $stmt->bind_param("iis", $patient_id, $doctor_id, $appointment_date);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    if ($result->num_rows > 0) {
+        die("You already have a consultation with this doctor on the same day.");
+    }
 
-$types = array('clinic', 'online');
+    // Get doctor details and pricing
+    $stmt = $conn->prepare("SELECT d.name,d.working_hours,clinic_price,online_price,specialization,d.phone,education,h.name as hospital_name ,dp.name as department_name FROM doctors d
+    left outer join departments dp on dp.id = d.department_id 
+    left outer join hospitals h on h.id = d.hospital_id 
+    WHERE d.id = ?");
+    $stmt->bind_param("i", $doctor_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $doctor = $result->fetch_assoc();
 
-if(!in_array($type, $types, true)){
-  die("يجب اختيار  نوع استشارة مناسب");
-}
+    if (!$doctor) {
+        die("Doctor information not found.");
+    }
 
-// 5. التحقق من وجود استشارة لنفس المريض والدكتور في نفس اليوم
-$appointment_date = date("Y-m-d", $appointment_time); // اليوم فقط بدون الوقت
+    $price = ($type == 'online') ? $doctor['online_price'] : $doctor['clinic_price'];
 
-$stmt = $conn->prepare("
-    SELECT id FROM consultations 
-    WHERE patient_id = ? AND doctor_id = ? AND DATE(created_at) = ?
-");
-$stmt->bind_param("iis", $patient_id, $doctor_id, $appointment_date);
-$stmt->execute();
-$result = $stmt->get_result();
-
-
-if ($result->num_rows > 0) {
-  die("أنت مسجل بالفعل في استشارة مع هذا الدكتور في نفس اليوم.");
-}
-
-// 6. جلب بيانات الدكتور
-$stmt = $conn->prepare("SELECT d.name,d.working_hours,clinic_price,online_price,specialization,d.phone,education,h.name as hospital_name ,dp.name as department_name FROM doctors d
-left outer join departments dp on dp.id = d.department_id 
-left outer join hospitals h on h.id = d.hospital_id 
- WHERE d.id = ?");
-$stmt->bind_param("i", $doctor_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$doctor = $result->fetch_assoc();
-
-if (!$doctor) {
-  die("لم يتم العثور على بيانات الدكتور.");
-}
-
-$price = ($type == 'online') ? $doctor['online_price'] : $doctor['clinic_price'];
-
-// 7. تخزين البيانات مؤقتاً للذهاب إلى صفحة الدفع
-$_SESSION['doctor'] = $doctor;
-$_SESSION['price'] = $price;
-$_SESSION['appointment'] = $appointment;
-$_SESSION['type'] = $type;
-header("Location: pay.php");
+    // Store session data for payment
+    $_SESSION['doctor'] = $doctor;
+    $_SESSION['price'] = $price;
+    $_SESSION['appointment'] = $appointment;
+    $_SESSION['type'] = $type;
+    header("Location: pay.php");
 }
 ?>
 <!DOCTYPE html>
@@ -117,7 +108,7 @@ header("Location: pay.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DocPoint - قسم الاستشارة</title>
+  <title>DocPoint - Consultation Department</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -132,13 +123,13 @@ header("Location: pay.php");
     include_once "../includes/header.php";
     ?>
     <br>
-  <!-- قسم كيفية العمل -->
+  <!-- How the service works section -->
   <section class="how-it-works text-center">
     <div class="container">
       <h2 class="mb-5">How does the service work?</h2>
 
       <div class="row">
-        <!-- الخطوة 1 -->
+        <!-- Step 1 -->
         <div class="col-md-4 wow animate__animated animate__fadeInLeft" data-wow-delay="0.2s">
           <div class="step-card p-4 shadow-lg rounded">
             <div class="step-number bg-primary text-white mx-auto mb-3">1</div>
@@ -148,7 +139,7 @@ header("Location: pay.php");
           </div>
         </div>
 
-        <!-- الخطوة 2 -->
+        <!-- Step 2 -->
         <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
           <div class="step-card p-4 shadow-lg rounded">
             <div class="step-number bg-primary text-white mx-auto mb-3">2</div>
@@ -158,7 +149,7 @@ header("Location: pay.php");
           </div>
         </div>
 
-        <!-- الخطوة 3 -->
+        <!-- Step 3 -->
         <div class="col-md-4 wow animate__animated animate__fadeInRight" data-wow-delay="0.6s">
           <div class="step-card p-4 shadow-lg rounded">
             <div class="step-number bg-primary text-white mx-auto mb-3">3</div>
@@ -175,7 +166,7 @@ header("Location: pay.php");
   <section class="content-section py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <!-- معلومات الاستشارة -->
+        <!-- Consultation information -->
         <div class="col-lg-5 col-md-6 mb-4">
           <div class="info-box p-4 h-100 animate__animated animate__fadeInLeft">
             <h4 class="section-title text-primary">Consultation Information</h4>
@@ -207,7 +198,7 @@ header("Location: pay.php");
           </div>
         </div>
 
-        <!-- نموذج طلب الاستشارة -->
+        <!-- Consultation request form -->
         <div class="col-lg-5 col-md-6 mb-4">
           <div class="info-box p-4 h-100 animate__animated animate__fadeInRight">
             <h2 class="interactive-title text-primary">Request a New Consultation</h2>
@@ -246,7 +237,7 @@ header("Location: pay.php");
     </div>
   </section>
 
-  <!-- قسم الأسئلة الشائعة -->
+  <!-- FAQ section -->
   <section class="faq-section">
     <div class="container">
       <div class="section">
@@ -271,7 +262,7 @@ header("Location: pay.php");
       </div>
     </div>
   </section>
- <!-- محتوى الموقع يأتي هنا -->
+ <!-- Site content comes here -->
     
  <?php
     include_once "../includes/footer.php";
